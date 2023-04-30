@@ -1,0 +1,203 @@
+---
+title: "Datafest"
+author: "Anthony Chen"
+date: "2023-04-29"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(tm)
+library(tidytext)
+library(ggwordcloud)
+questions <- read.csv("questions.csv")
+questionposts <- read.csv("questionposts.csv")
+
+```
+```{r}
+# Data scraped from top common english words, added "i"
+common_words <- read.csv("comwords.csv")
+common_words_col <- common_words$Word
+common_words_col <- c(common_words_col, "i", "t", "s")
+```
+
+# PRECENT OF CATEGORY
+```{r}
+questions %>% group_by(Category) %>% 
+  summarize(count = n()) %>% 
+  mutate(percent = count / sum(count) * 100)
+```
+# GRAPH OF CATEGORY COUNTS BY MONTH
+```{r}
+questions$month <- str_sub(questions$AskedOnUtc, 6, 7)
+questions %>% 
+  group_by(month, Category) %>% 
+  summarize(count = n()) %>% 
+  ggplot(aes(x = month, y = count, color = Category, fill = Category)) + geom_point() + theme_minimal() + xlab("Month") + ylab("Number of Questions")
+```
+
+# REMOVE THE THINGS THAT ARENT ALPHA NUMERIC
+```{r}
+questionpoststext <- str_replace_all(questionposts$PostText, "[^[:alnum:]]", " ")
+```
+
+# SEPARATE THE WORDS
+```{r}
+questionpoststext <- questionposts %>% unnest_tokens(word, PostText) %>% head(1000000)
+```
+
+```{r}
+# questionpoststext %>% group_by(word, QuestionUno) %>% 
+#   filter(!word %in% common_words_col) %>% 
+#   count(word) %>% 
+#   arrange(desc(n)) %>% 
+#   inner_join(questions, by= "QuestionUno")
+```
+
+# TAKE OUT THE QUESTIONS WITHOUT THE ID AND COUNT THE WORDS
+```{r}
+frequency_questions <- questionpoststext %>% filter(!word %in% common_words_col) %>% head(30000) %>% count(word) %>% arrange(desc(n))
+```
+
+# FREQUENCY OF THE WORDS COUNTED, USING RANDOMIZED QUESTIONS,
+```{r}
+frequency_words <- questionpoststext %>% filter(!word %in% common_words_col) %>% inner_join(questions, by = "QuestionUno") %>% group_by(QuestionUno) %>% head(100000) %>% count(word) %>% arrange(desc(n))
+```
+
+```{r}
+# frequency_questions
+# 
+# frequency_words
+```
+
+# FREQUENT WORDS, FILTERED OUT COMMON WORDS, 
+```{r}
+freq_word_category <- questionpoststext %>% 
+  inner_join(questions, by = "QuestionUno") %>% 
+  group_by(Category, QuestionUno) %>% 
+  select(QuestionUno, Category, word) %>% 
+  filter(!word %in% common_words_col) %>% 
+  count(word) %>% 
+  arrange(desc(n)) %>% 
+  head(200000)
+ 
+```
+
+```{r}
+fwc_housing <- freq_word_category %>%  filter(Category == "Housing and Homelessness") %>% arrange(desc(n)) %>%
+  select(QuestionUno, Category, word, n) %>% head(150) %>% ggplot(aes(label = word, size = n)) + geom_text_wordcloud() + facet_wrap("Category")
+
+fwc_housing <- freq_word_category %>% 
+  filter(Category == "Housing and Homelessness") %>% 
+  head(150) %>% 
+  ggplot(aes(label = word, size = n)) + 
+  geom_text_wordcloud() + theme_minimal()
+  
+fwc_housing
+```
+```{r}
+fwc_financial <- freq_word_category %>% 
+  filter(Category == "Consumer Financial Questions") %>% 
+  head(150) %>% 
+  ggplot(aes(label = word, size = n)) + 
+  geom_text_wordcloud()+ theme_minimal()
+fwc_financial
+```
+
+```{r}
+fwc_edu <- freq_word_category %>% 
+  filter(Category == "Education") %>% 
+  head(150) %>% 
+  ggplot(aes(label = word, size = n)) + 
+  geom_text_wordcloud()+ theme_minimal()
+
+fwc_edu
+```
+
+```{r}
+fwc_family <- freq_word_category %>% 
+  filter(Category == "Family and Children") %>% 
+  head(150) %>% 
+  ggplot(aes(label = word, size = n)) + 
+  geom_text_wordcloud()+ theme_minimal()
+fwc_family
+```
+
+```{r}
+fwc_health <- freq_word_category %>% 
+  filter(Category == "Health and Disability") %>% 
+  head(150) %>% 
+  ggplot(aes(label = word, size = n)) + 
+  geom_text_wordcloud()+ theme_minimal()
+fwc_health
+```
+
+```{r}
+fwc_income <- freq_word_category %>% 
+  filter(Category == "Income Maintenance") %>% 
+  head(150) %>% 
+  ggplot(aes(label = word, size = n)) + 
+  geom_text_wordcloud()+ theme_minimal()
+fwc_income
+```
+
+```{r}
+fwc_individual_rights <- freq_word_category %>% 
+  filter(Category == "Individual Rights") %>% 
+  head(150) %>% 
+  ggplot(aes(label = word, size = n)) + 
+  geom_text_wordcloud()+ theme_minimal()
+fwc_individual_rights
+```
+
+```{r}
+fwc_juvenile <- freq_word_category %>% 
+  filter(Category == "Juvenile") %>% 
+  head(150) %>% 
+  ggplot(aes(label = word, size = n)) + 
+  geom_text_wordcloud()+ theme_minimal()
+fwc_juvenile
+```
+
+```{r}
+fwc_other <- freq_word_category %>% 
+  filter(Category == "Other") %>% 
+  head(150) %>% 
+  ggplot(aes(label = word, size = n)) + 
+  geom_text_wordcloud()+ theme_minimal()
+fwc_other
+```
+
+```{r}
+fwc_work <- freq_word_category %>% 
+  filter(Category == "Work, Employment and Unemployment") %>% 
+  head(150) %>% 
+  ggplot(aes(label = word, size = n)) + 
+  geom_text_wordcloud() + theme_minimal()
+fwc_work
+```
+
+```{r}
+freq_word_state <- questionpoststext %>% 
+  inner_join(questions, by = "QuestionUno") %>% 
+  group_by(StateAbbr.x, QuestionUno) %>%
+  select(QuestionUno, StateAbbr.x, word) %>%
+  filter(!word %in% common_words_col) %>%
+  count(word) %>% 
+  filter(n >= 10) %>% 
+  arrange(desc(n)) %>% 
+  head(10000) 
+
+
+```
+
+```{r}
+freq_word_state <- freq_word_state %>% arrange(desc(n), StateAbbr.x) %>% head(150)
+freq_word_state
+freq_word_state %>% ggplot(aes(label = word, size = n)) + geom_text_wordcloud() + facet_wrap("StateAbbr.x")
+```
+
+
+
+
