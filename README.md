@@ -30,31 +30,41 @@ Counted up the words and joined this data frame with the questions data frame wh
 
 #### Housing and Homelessness
 Housing and Homelessness (landlords, tenants, leases are a big topic for this: meaning that these people are dealing with the landlords that they are paying to and rent)
+![housing](https://github.com/calebtran7/ABA-Pro-bono-Analysis/assets/98145591/56b042ec-fcb3-477c-a0fc-f68f8ab17d31)
 
 #### Consumer Financial Questions
 Consumer financial Questions (people are being told to use their better judgment and often have difficulty making decisions with those big purchases like cars, property. Bankruptcy also shows up twice)
+![consumer_financial](https://github.com/calebtran7/ABA-Pro-bono-Analysis/assets/98145591/9eb23964-4a82-4255-953c-6591e82cd0f4)
 
 #### Education
 Education (deals with school, bullying. suspension, hearing problems?)
+![education](https://github.com/calebtran7/ABA-Pro-bono-Analysis/assets/98145591/19b00504-8f5d-4c3b-9a08-eaae9cafab0b)
 
 #### Family and Children
 Family and Children (dealing with marriage, father, mother) 
+![family](https://github.com/calebtran7/ABA-Pro-bono-Analysis/assets/98145591/1d38fc7d-7794-4e35-8de0-6ab6d5be0f6c)
 
 #### Health and Disability
 Health and Disability (nursing, complaints, sister)
+![health_disability](https://github.com/calebtran7/ABA-Pro-bono-Analysis/assets/98145591/0ee521fd-7d61-47cd-9d14-86b749457ee4)
 
 #### Income Maintenance
 Income Maintenance (trusts like bonds, social security, banks, child support)
+![income](https://github.com/calebtran7/ABA-Pro-bono-Analysis/assets/98145591/d238ba6e-4f20-428e-adc4-af5a289e908b)
 
 #### Individual Rights
 Individual Rights (people have their individual rights to a lawyer, need to find a lawyer and an attorney. People are worried about their 1st amendment rights like religion. deal with those rights given in the bill of right)
+![individual](https://github.com/calebtran7/ABA-Pro-bono-Analysis/assets/98145591/6e27acb2-98dd-4b46-bde9-b23675112aa8)
 
 #### Juvenile
 Juvenile (not surprisingly, deals with children)
+![juvenile](https://github.com/calebtran7/ABA-Pro-bono-Analysis/assets/98145591/c261aded-11ea-4f71-af74-a98291157ae9)
 
 #### Other
 Other (other mainly has words relating to court and cases)
+![other](https://github.com/calebtran7/ABA-Pro-bono-Analysis/assets/98145591/8834da53-ddb7-4d5d-b52c-32c71bf364fe)
 
 #### Work Employment and Unemployment
 Work employment and unemployment (dealing with health, holiday breaks, and covid. covid layoffs leading to unemployment, people dealing with the contracts given)
+![work](https://github.com/calebtran7/ABA-Pro-bono-Analysis/assets/98145591/d06e7702-6806-414f-a8a9-14a4a75d4713)
 
