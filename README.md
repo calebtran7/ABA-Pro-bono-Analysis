@@ -20,3 +20,42 @@ Below are some of the visualizations with produced, along with the insights we g
 
 
 <img width="713" alt="Attorney locations" src="https://user-images.githubusercontent.com/121086856/235502113-d98e9b2d-e883-4a14-96d1-af0ecd0c8e2c.png">
+
+## Word maps
+Created word maps using the most common words in the responses.
+Excluded out the words of the top 100 words from wikipedia table scraped into a csv
+This was done using pandas
+Then we sparse through the question results and separate them by each word
+Counted up the words and joined this data frame with the questions data frame which enabled us to see which categories each question prompt belonged to
+
+#### Housing and Homelessness
+Housing and Homelessness (landlords, tenants, leases are a big topic for this: meaning that these people are dealing with the landlords that they are paying to and rent)
+<img width="713" alt="Attorney locations" src="https://user-images.githubusercontent.com/121086856/235502113-d98e9b2d-e883-4a14-96d1-af0ecd0c8e2c.png">
+
+#### Consumer Financial Questions
+Consumer financial Questions (people are being told to use their better judgment and often have difficulty making decisions with those big purchases like cars, property. Bankruptcy also shows up twice)
+
+#### Education
+Education (deals with school, bullying. suspension, hearing problems?)
+
+#### Family and Children
+Family and Children (dealing with marriage, father, mother) 
+
+#### Health and Disability
+Health and Disability (nursing, complaints, sister)
+
+#### Income Maintenance
+Income Maintenance (trusts like bonds, social security, banks, child support)
+
+#### Individual Rights
+Individual Rights (people have their individual rights to a lawyer, need to find a lawyer and an attorney. People are worried about their 1st amendment rights like religion. deal with those rights given in the bill of right)
+
+#### Juvenile
+Juvenile (not surprisingly, deals with children)
+
+#### Other
+Other (other mainly has words relating to court and cases)
+
+#### Work Employment and Unemployment
+Work employment and unemployment (dealing with health, holiday breaks, and covid. covid layoffs leading to unemployment, people dealing with the contracts given)
+
