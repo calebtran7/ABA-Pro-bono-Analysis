@@ -30,7 +30,6 @@ Counted up the words and joined this data frame with the questions data frame wh
 
 #### Housing and Homelessness
 Housing and Homelessness (landlords, tenants, leases are a big topic for this: meaning that these people are dealing with the landlords that they are paying to and rent)
-<img width="713" alt="Attorney locations" src="https://user-images.githubusercontent.com/121086856/235502113-d98e9b2d-e883-4a14-96d1-af0ecd0c8e2c.png">
 
 #### Consumer Financial Questions
 Consumer financial Questions (people are being told to use their better judgment and often have difficulty making decisions with those big purchases like cars, property. Bankruptcy also shows up twice)
