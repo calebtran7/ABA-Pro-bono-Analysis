@@ -1,6 +1,6 @@
 # American Bar Association Data Analysis
 
-In this project, we cleaned data from the American Bar Association that outlined client demographics, attorney demographics, real client-lawyer conversations, and attributes of these conversations. Using Python (Pandas, NumPy), R, and Tableau, we performed an EDA on the data sets with a goal of helping ABA improve their system so that attorneys can be better prepared for their clients, clients can receive better services, and the interactions between the two parties can be more productive overall. 
+In this project, we cleaned data from the American Bar Association that outlined client demographics, attorney demographics, real client-lawyer conversations, and attributes of these conversations. Using Python (Pandas, NumPy), R, and Tableau, we performed an EDA on the data sets with goals of helping ABA improve their system so that attorneys can be better prepared for their in-need clients, clients can receive improved services, and interactions between the two parties can be more impactul overall. 
 
 Below are some of the visualizations with produced, along with the insights we gained from them.
 
